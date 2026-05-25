@@ -1,0 +1,47 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services" // This should NOT have a version
+}
+
+
+android {
+    namespace = "com.company.parkit"
+    compileSdk = 34 // Set explicitly to avoid errors
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId = "com.company.parkit"
+        minSdk = 23
+        targetSdk = 34 // Explicitly define
+        versionCode = 1
+        versionName = "1.0"
+    }
+
+    buildTypes {
+        release {
+            // Ensure proper signing configuration
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// Ensure Flutter configuration
+flutter {
+    source = "../.."
+}
+
+// Apply Google Services after android block
+apply plugin: 'com.google.gms.google-services'
