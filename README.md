@@ -125,11 +125,6 @@ lib/
 
 ---
 
-## 📸 Screenshots
-
-_Add application screenshots here_
-
----
 
 ## 👨‍💻 Developed By
 
